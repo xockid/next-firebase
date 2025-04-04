@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import Header from "@/components/Header";
 
 export const metadata: Metadata = {
-    title: "My Next.js App",
+    title: "Next.js + Firebase App",
     description: "Next.js + Firebase + GA 교육 자료",
 };
 export default function RootLayout({
@@ -21,19 +22,20 @@ export default function RootLayout({
                 <script
                     dangerouslySetInnerHTML={{
                         __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){ dataLayer.push(arguments); }
-              gtag('js', new Date());
-              gtag('config', '${process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID}', {
-                page_path: window.location.pathname,
-              });
-            `,
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){ dataLayer.push(arguments); }
+                        gtag('js', new Date());
+                        gtag('config', '${process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID}', {
+                            page_path: window.location.pathname,
+                        });
+                        `,
                     }}
                 />
             </head>
             <body>
+                <Header />
                 {children}
-                <GoogleAnalytics />
+                <GoogleAnalytics /> {/* 클라이언트 컴포넌트 추가 */}
             </body>
         </html>
     );
