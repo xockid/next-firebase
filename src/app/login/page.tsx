@@ -5,6 +5,8 @@ import { useAuth } from "@/hooks/useAuth";
 import { signInWithGitHub, signInWithGoogle } from "@/lib/auth";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import "@/styles/components/auth.scss";
+import "@/styles/components/button.scss";
 
 export default function LoginPage() {
     const router = useRouter();
@@ -17,11 +19,16 @@ export default function LoginPage() {
     }, [user, router]);
 
     return (
-        <div>
-            <h2>로그인 페이지</h2>
+        <div className="auth-container">
             <LoginForm />
-            <button onClick={signInWithGoogle}>Google 회원가입/로그인</button>
-            <button onClick={signInWithGitHub}>GitHub 회원가입/로그인</button>
+            <div className="button-wrap">
+                <button className="button" onClick={signInWithGoogle}>
+                    Google 회원가입/로그인
+                </button>
+                <button className="button" onClick={signInWithGitHub}>
+                    GitHub 회원가입/로그인
+                </button>
+            </div>
         </div>
-    )
+    );
 }

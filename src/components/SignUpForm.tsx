@@ -2,6 +2,7 @@
 
 import { signUp } from "@/lib/auth";
 import { useState } from "react";
+import '@/styles/components/auth.scss';
 
 export default function SignUpForm() {
     const [email, setEmail] = useState("");
@@ -21,7 +22,7 @@ export default function SignUpForm() {
     };
 
     return (
-        <form onSubmit={handleSignUp}>
+        <form onSubmit={handleSignUp} className="auth-form">
             <input
                 type="email"
                 placeholder="이메일"
@@ -37,7 +38,7 @@ export default function SignUpForm() {
                 required
             />
             <button type="submit">회원가입</button>
-            {error && <p>{error}</p>}
+            {error && <p className="auth-error">{error}</p>}
         </form>
     );
 }
