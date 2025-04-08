@@ -6,7 +6,7 @@ import Link from "next/link";
 import '@/styles/components/header.scss';
 
 export default function Header() {
-    const { user, loading } = useAuth();
+    const { user } = useAuth();
     return (
         <header>
             <h1>
